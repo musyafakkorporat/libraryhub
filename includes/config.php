@@ -1,21 +1,23 @@
 <?php
 // includes/config.php
-define('DB_HOST',    'localhost');
-define('DB_NAME',    'db_library');
-define('DB_USER',    'root');
-define('DB_PASS',    '');
+define('DB_HOST',    'thomas.proxy.rlwy.net'); 
+define('DB_NAME',    'railway');                
+define('DB_USER',    'root');                   
+define('DB_PASS',    'XYyisJYQUQErHNQciQgsSweXFobVwGIx'); 
+define('DB_PORT',    56132;                    
 define('DB_CHARSET', 'utf8mb4');
 define('SITE_NAME',  'LibraryHub');
-define('DENDA_PER_HARI', 1000); // Rp1.000/hari
-define('MAKS_PINJAM', 3);       // maks buku per sekali pinjam
-define('LAMA_PINJAM', 7);       // hari pinjam default
+define('DENDA_PER_HARI', 1000);
+define('MAKS_PINJAM', 3);       
+define('LAMA_PINJAM', 7);       
 
 function getDB(): PDO {
     static $pdo = null;
     if ($pdo === null) {
         try {
+            // Sudah ditambahkan ;port= di bawah ini agar tersambung ke port proxy Railway
             $pdo = new PDO(
-                "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=".DB_CHARSET,
+                "mysql:host=".DB_HOST.";port=".DB_PORT.";dbname=".DB_NAME.";charset=".DB_CHARSET,
                 DB_USER, DB_PASS,
                 [PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
                  PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC,
@@ -23,9 +25,9 @@ function getDB(): PDO {
             );
         } catch (PDOException $e) {
             die('<div style="font-family:sans-serif;padding:30px;color:#dc2626">
-                <h3>❌ Koneksi Database Gagal</h3>
+                <h3>Koneksi Database Gagal</h3>
                 <p>'.$e->getMessage().'</p>
-                <p>Pastikan XAMPP aktif dan database <strong>'.DB_NAME.'</strong> sudah dibuat dari file <code>database.sql</code>.</p>
+                <p>Pastikan koneksi internet aktif dan variabel proxy <strong>'.DB_HOST.'</strong> sudah sesuai.</p>
             </div>');
         }
     }
