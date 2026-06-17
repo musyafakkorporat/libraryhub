@@ -23,6 +23,10 @@ function getDB(): PDO {
                  PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC,
                  PDO::ATTR_EMULATE_PREPARES=>false]
             );
+
+            // TAMBAHKAN BARIS INI UNTUK MEMATIKAN MODE KETAT MYSQL RAILWAY
+            $pdo->exec("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+
         } catch (PDOException $e) {
             die('<div style="font-family:sans-serif;padding:30px;color:#dc2626">
                 <h3>Koneksi Database Gagal</h3>
