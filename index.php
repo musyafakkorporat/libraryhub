@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Dashboard'; $activeMenu = 'dashboard'; $depth = '';
-require_once __DIR__.'../includes/header.php';
+require_once '/includes/header.php';
 $db = getDB();
 
 $totalBuku      = $db->query("SELECT COUNT(*) FROM buku")->fetchColumn();
@@ -188,4 +188,4 @@ $covers = ['c1','c2','c3','c4','c5','c1','c2'];
   </div>
 </div>
 
-<?php require_once __DIR__.'/includes/footer.php'; ?>
+<?php require_once '/includes/footer.php'; ?>
