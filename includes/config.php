@@ -4,7 +4,7 @@ define('DB_HOST',    'thomas.proxy.rlwy.net');
 define('DB_NAME',    'railway');                
 define('DB_USER',    'root');                   
 define('DB_PASS',    'XYyisJYQUQErHNQciQgsSweXFobVwGIx'); 
-define('DB_PORT',    56132;                    
+define('DB_PORT',    56132);                    
 define('DB_CHARSET', 'utf8mb4');
 define('SITE_NAME',  'LibraryHub');
 define('DENDA_PER_HARI', 1000);
